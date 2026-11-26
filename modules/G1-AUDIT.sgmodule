@@ -1,0 +1,10 @@
+#!name=G1-AUDIT v1.0.0 (GitHub)
+#!desc=Local passive diagnostics; no purchase rewriting, no global UDP block
+#!system=ios
+
+[Script]
+g1-audit-scan = type=http-response,pattern=^https:\/\/one\.google\.com\/,requires-body=1,max-size=1048576,script-path=https://raw.githubusercontent.com/sl1mus/g1-audit/2c04774cb991fb0615f2e3e74b38c9930d6aba95/scripts/g1-audit-v1.0.0.js,script-update-interval=0
+g1-audit-report = type=http-request,pattern=^https:\/\/one\.google\.com\/g1-audit-local-v1(?:\?format=json)?$,script-path=https://raw.githubusercontent.com/sl1mus/g1-audit/2c04774cb991fb0615f2e3e74b38c9930d6aba95/scripts/g1-audit-v1.0.0.js,script-update-interval=0
+
+[MITM]
+hostname = %APPEND% one.google.com
